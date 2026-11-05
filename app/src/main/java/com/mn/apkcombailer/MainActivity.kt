@@ -71,7 +71,7 @@ private fun HomeScreen() {
                 Spacer(Modifier.width(12.dp))
                 Column {
                     Text("MN APK", fontSize = 24.sp, fontWeight = FontWeight.ExtraBold)
-                    Text("COMBAILER", color = Accent, fontSize = 11.sp, letterSpacing = 4.sp)
+                    Text("Compiler", color = Accent, fontSize = 11.sp, letterSpacing = 4.sp)
                 }
                 Spacer(Modifier.weight(1f))
                 Text("LOCAL", color = Color(0xFF7CE0AE), fontSize = 11.sp, fontWeight = FontWeight.Bold)
@@ -160,7 +160,7 @@ private fun HomeScreen() {
                 )
             }
 
-            Text("MN APK COMBAILER  •  VERSION 1.0", color = Color.DarkGray, fontSize = 10.sp,
+            Text("MN APK Compiler   •  VERSION 1.0", color = Color.DarkGray, fontSize = 10.sp,
                 modifier = Modifier.align(Alignment.CenterHorizontally))
         }
     }

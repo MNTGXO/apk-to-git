@@ -19,7 +19,7 @@ object GitHubDownloader {
                 readTimeout = 60_000
                 setRequestProperty("Accept", "application/vnd.github+json")
                 setRequestProperty("X-GitHub-Api-Version", "2022-11-28")
-                setRequestProperty("User-Agent", "MN-APK-COMBAILER")
+                setRequestProperty("User-Agent", "Git APK Compiler by-MusammmilN")
                 if (token.isNotBlank()) setRequestProperty("Authorization", "Bearer $token")
                 instanceFollowRedirects = false
             }
@@ -41,7 +41,7 @@ object GitHubDownloader {
             val connection = (downloadUrl.openConnection() as HttpURLConnection).apply {
                 connectTimeout = 20_000
                 readTimeout = 120_000
-                setRequestProperty("User-Agent", "MN-APK-COMBAILER")
+                setRequestProperty("User-Agent", "MN-APK-Compiler")
                 // The redirect URL is a temporary signed URL; do not forward the PAT.
             }
             if (connection.responseCode !in 200..299) {
