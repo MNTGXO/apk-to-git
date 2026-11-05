@@ -68,7 +68,7 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mn-apk-combailer-${{ github.run_number }}
+          name: git-apk-compiler-${{ github.run_number }}
           path: target-project/**/build/outputs/apk/**/*.apk
           if-no-files-found: error
           retention-days: 7

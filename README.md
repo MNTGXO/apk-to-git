@@ -1,4 +1,4 @@
-# MN APK COMBAILER
+# mn git apk compiler
 
 A Kotlin + Jetpack Compose Android app for importing GitHub repositories, plus a GitHub Actions workflow that can build a selected Android Gradle project and publish its APK as a downloadable workflow artifact.
 
