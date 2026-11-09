@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout builder repository
         uses: actions/checkout@v4
@@ -44,7 +44,8 @@ jobs:
           java-version: "17"
 
       - name: accept android sdk licenses
-        run: yes | sdkmanager --licenses
+        shell: cmd
+        run: echo y | sdkmanager --licenses
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -52,20 +53,16 @@ jobs:
       - name: Build debug APK
         working-directory: target-project
         env:
-          GRADLE_TASK: ${{input.gradle_task}}
-        shell: bash
+          GRADLE_TASK: ${{ inputs.gradle_task }}
+        shell: pwsh
         run: |
-          set -euo pipefail
-          if [[ -x ./gradlew ]]; then
-            ./gradlew --no-daemon "$GRADLE_TASK"
-          elif [[ -f ./gradlew ]]; then
-            chmod +x ./gradlew
-            ./gradlew --no-daemon "$GRADLE_TASK"
-          else
-            echo "::error::Target repository has no Gradle wrapper (gradlew)."
-            echo "For reproducible builds, include the Gradle wrapper in the target repository."
+          if (Test-Path .\gradlew.bat) {
+            .\gradlew.bat --no-daemon $env:GRADLE_TASK
+          } else {
+            Write-Error "Target repository has no Gradle wrapper (gradlew.bat)."
+            Write-Error "For reproducible builds, include the Gradle wrapper in the target repository."
             exit 1
-          fi
+          }
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
