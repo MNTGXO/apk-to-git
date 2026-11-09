@@ -45,7 +45,7 @@ jobs:
 
       - name: accept android sdk licenses
         shell: cmd
-        run: echo y | "%ANDROID_HOME%\cmdline_tools\latest\bin\sdkmanager.bat" --licenses
+        run: echo y | "%ANDROID_HOME%\cmdline-tools\latest\bin\sdkmanager.bat" --licenses
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
