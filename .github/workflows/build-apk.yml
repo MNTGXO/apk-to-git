@@ -49,20 +49,15 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
 
       - name: Build debug APK
         working-directory: target-project
         env:
           GRADLE_TASK: ${{ inputs.gradle_task }}
         shell: pwsh
-        run: |
-          if (Test-Path .\gradlew.bat) {
-            .\gradlew.bat --no-daemon $env:GRADLE_TASK
-          } else {
-            Write-Error "Target repository has no Gradle wrapper (gradlew.bat)."
-            Write-Error "For reproducible builds, include the Gradle wrapper in the target repository."
-            exit 1
-          }
+        run: gradle --no-daemon $env:GRADLE_TASK
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
